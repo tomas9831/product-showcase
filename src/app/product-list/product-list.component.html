@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-header">
+    {{ title }}
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-2">
+        Search:
+        <input type="text" [(ngModel)]="filterText" />
+      </div>
+    </div>
+    <div class="row">
+      <h4 class="header">Searched by: {{ filterText }}</h4>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <button class="btn btn-primary" (click)="toggleImage()">
+              {{ showImage ? 'Hide' : 'Show' }} Image
+            </button>
+            <button class="btn btn-dark" (click)="toggleTable()">
+              {{ showTable ? 'Hide' : 'Show' }} All
+            </button>
+          </th>
+          <th>Product</th>
+          <th>Code</th>
+          <th>Available</th>
+          <th>Price</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="showTable">
+        <tr *ngFor="let product of products | searchFilter: filterText">
+          <td>
+            <img
+              *ngIf="showImage"
+              [src]="product.imageUrl"
+              [title]="product.productName"
+              [style.width.px]="imageWidth"
+            />
+          </td>
+
+          <td>
+            <button class="btn btn-link" (click)="onProduct(product.productId)">
+              {{ product.productName }}
+            </button>
+          </td>
+
+          <td>{{ product.productCode }}</td>
+          <td>{{ product.releaseDate }}</td>
+          <td>{{ product.price | currency: 'CZK' }}</td>
+          <td><app-star [rating]="product.starRating"></app-star></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
