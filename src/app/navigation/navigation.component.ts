@@ -19,4 +19,7 @@ export class NavigationComponent implements OnInit {
   onCalculator(): void {
     this.router.navigate(["/calculator"]);
   }
+  onForms(): void {
+    this.router.navigate(["/funny"]);
+  }
 }

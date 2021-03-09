@@ -14,17 +14,20 @@ export class CalculatorComponent implements OnInit {
   input: number;
   pi: number = Math.PI;
   showTable: boolean = false;
-  showPolomer: boolean = false;
-  showPriemer: boolean = false;
-  showObvod: boolean = false;
-  showObsah: boolean = false;
+  error_message: string;
+  error_flag: boolean = false;
   types: any[] = ["obvod", "obsah", "polomer", "priemer"];
   selected = "None";
 
   constructor() {}
 
   toggleCalculator(type: string, selectedValue: number): void {
-    this.toggleTable();
+    this.showTable = true;
+    if (selectedValue < 0) {
+      this.error_message = "Zadal si záporné číslo";
+      this.error_flag = true;
+      this.showTable = false;
+    }
     switch (type) {
       case "polomer": {
         this.calculatePolomer(selectedValue);

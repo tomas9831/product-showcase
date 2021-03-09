@@ -1,0 +1,37 @@
+<div>
+  <form [formGroup]="customer" (ngSubmit)="onSubmit(customer)">
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName" />
+      <p *ngIf="fname_flag">
+        First Name should contain only Letters and should not be empty
+      </p>
+    </label>
+    <br />
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName" />
+      <p *ngIf="lname_flag">
+        Last Name should contain only Letters and should not be empty
+      </p>
+    </label>
+    <br />
+    <label>
+      Age:
+      <input type="text" formControlName="age" />
+      <p *ngIf="age_flag">
+        Age should contain only NUMBERS and should not be empty
+      </p>
+    </label>
+    <br />
+    <label>
+      License Plate:
+      <input type="text" formControlName="lpn" />
+      <p *ngIf="lpn_flag">
+        LPN should contain Letters and Numbers and should not be empty
+      </p>
+    </label>
+    <br />
+    <button type="submit">Submit carpark reservation</button>
+  </form>
+</div>

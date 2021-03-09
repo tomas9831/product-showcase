@@ -45,6 +45,10 @@
   <button class="btn btn-primary" (click)="toggleCalculator(selected, input)">
     Vypočítaj
   </button>
+  <app-error-message
+    *ngIf="error_flag"
+    [message_data]="error_message"
+  ></app-error-message>
 
   <div class="card-body" *ngIf="showTable">
     <div class="row">
