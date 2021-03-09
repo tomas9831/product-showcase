@@ -1,0 +1,76 @@
+<div class="card">
+  <div class="card-header">
+    {{ "Obsah kruhu" }}
+  </div>
+  <img src="assets/kruh.png" [style.width.px]="350" />
+  <br />
+  <h4>Zadaj jedno</h4>
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option value="polomer">Polomer</mat-option>
+      <mat-option value="priemer">Priemer</mat-option>
+      <mat-option value="obvod">Obvod</mat-option>
+      <mat-option value="obsah">Obsah</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="row" *ngIf="selected == 'priemer'">
+    <div class="col-md-2">
+      Priemer:
+      <input type="text" [(ngModel)]="input" />
+    </div>
+  </div>
+  <div class="row" *ngIf="selected == 'polomer'">
+    <div class="col-md-2">
+      Polomer:
+      <input type="text" [(ngModel)]="input" />
+    </div>
+  </div>
+  <div class="row" *ngIf="selected == 'obvod'">
+    <div class="col-md-2">
+      Obvod:
+      <input type="text" [(ngModel)]="input" />
+    </div>
+  </div>
+  <div class="row" *ngIf="selected == 'obsah'">
+    <div class="col-md-2">
+      Obsah:
+      <input type="text" [(ngModel)]="input" />
+    </div>
+  </div>
+
+  <br />
+  <button class="btn btn-primary" (click)="toggleCalculator(selected, input)">
+    Vypočítaj
+  </button>
+
+  <div class="card-body" *ngIf="showTable">
+    <div class="row">
+      <div class="col-md-2">
+        Polomer:
+        <input type="text" [(ngModel)]="polomer" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        Priemer:
+        <input type="text" [(ngModel)]="priemer" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        Obsah:
+        <input type="text" [(ngModel)]="obsah" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        Obvod:
+        <input type="text" [(ngModel)]="obvod" />
+      </div>
+    </div>
+    <br />
+  </div>
+</div>
