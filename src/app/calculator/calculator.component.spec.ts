@@ -4,6 +4,8 @@ import { CalculatorComponent } from "./calculator.component";
 
 describe("CalculatorComponent", () => {
   const calc = new CalculatorComponent();
+  const pi_num = 3.141592653589793;
+  const times2_pi= 6.283185307179586;
 
   it("should create ErrorMessage if number is negative", () => {
     let num: number = -10;
@@ -15,35 +17,33 @@ describe("CalculatorComponent", () => {
   });
   //overime vypocet pri vybere polomeru
   it("should calculate polomer correctly", () => {
-    let num: number = 5;
+    let num: number = 1;
     calc.toggleCalculator("polomer", num);
     let obvod = calc.obvod;
     let obsah = calc.obsah;
-    let obsah_vzorec = Math.PI * num * num;
-    let obvod_vzorec = 2 * Math.PI * num;
-    expect(obvod).toEqual(obvod_vzorec);
-    expect(obsah).toEqual(obsah_vzorec);
+
+    expect(obvod).toEqual(times2_pi);
+    expect(obsah).toEqual(pi_num);
   });
   //overime vypocet pri vybere obsahu
   it("should calculate obsah correctly", () => {
-    let num: number = 70;
+    let num: number = pi_num;
     calc.toggleCalculator("obsah", num);
     let polomer = calc.polomer;
     let obvod = calc.obvod;
-    let polomer_vzorec = Math.sqrt(num / Math.PI);
-    let obvod_vzorec = 2 * Math.PI * polomer_vzorec;
-    expect(obvod).toEqual(obvod_vzorec);
-    expect(polomer).toEqual(polomer_vzorec);
+
+    expect(obvod).toEqual(times2_pi);
+    expect(polomer).toEqual(1);
   });
   //overime vypocet pri vybere obvodu
   it("should calculate obvod correctly", () => {
-    let num: number = 70;
+    let num: number = times2_pi;
     calc.toggleCalculator("obvod", num);
     let polomer = calc.polomer;
     let obsah = calc.obsah;
-    let polomer_vzorec = num / (2 * Math.PI);
-    let obsah_vzorec = Math.PI * polomer_vzorec * polomer_vzorec;
-    expect(obsah).toEqual(obsah_vzorec);
-    expect(polomer).toEqual(polomer_vzorec);
+
+    expect(obsah).toEqual(pi_num);
+    expect(polomer).toEqual(1);
   });
+
 });
